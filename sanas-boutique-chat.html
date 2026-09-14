@@ -5,26 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Sana's Boutique — Chat with us</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap');
-
   :root{
     --plum: #5C2A3D;
-    --plum-deep: #3E1B29;
     --ivory: #FAF6EF;
     --gold: #B8935A;
     --blush: #F1E4DA;
     --ink: #2B2024;
   }
-
   *{ box-sizing:border-box; }
-
   html, body{
     margin:0; padding:0; height:100%;
     background: var(--ivory);
-    font-family:'Inter', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     color: var(--ink);
   }
-
   .app{
     max-width: 480px;
     margin: 0 auto;
@@ -34,7 +28,6 @@
     background: var(--ivory);
     box-shadow: 0 0 40px rgba(0,0,0,0.08);
   }
-
   header{
     background: var(--plum);
     color: var(--ivory);
@@ -44,34 +37,26 @@
     gap:12px;
     flex-shrink:0;
   }
-
   .avatar{
     width:42px; height:42px;
     border-radius:50%;
     background: var(--gold);
     display:flex; align-items:center; justify-content:center;
-    font-family:'Fraunces', serif;
     font-weight:600;
     font-size:18px;
-    color: var(--plum-deep);
-    flex-shrink:0;
+    color: var(--plum);
   }
-
   .header-text h1{
-    font-family:'Fraunces', serif;
     font-size: 19px;
     font-weight:600;
     margin:0;
-    letter-spacing:0.2px;
   }
-
   .header-text p{
     margin:2px 0 0;
     font-size:12.5px;
     color: var(--blush);
     opacity:0.85;
   }
-
   .status-dot{
     width:7px; height:7px;
     border-radius:50%;
@@ -79,7 +64,6 @@
     display:inline-block;
     margin-right:5px;
   }
-
   .thread{
     flex:1;
     overflow-y:auto;
@@ -88,7 +72,6 @@
     flex-direction:column;
     gap:12px;
   }
-
   .bubble{
     max-width: 82%;
     padding: 10px 14px;
@@ -97,56 +80,24 @@
     line-height:1.5;
     white-space:pre-wrap;
   }
-
   .bot{
     align-self:flex-start;
     background: #fff;
     border: 1px solid var(--blush);
     border-bottom-left-radius:4px;
-    color: var(--ink);
   }
-
   .user{
     align-self:flex-end;
     background: var(--plum);
     color: var(--ivory);
     border-bottom-right-radius:4px;
   }
-
-  .typing{
-    align-self:flex-start;
-    display:flex;
-    gap:4px;
-    padding: 12px 16px;
-    background:#fff;
-    border:1px solid var(--blush);
-    border-radius:16px;
-    border-bottom-left-radius:4px;
-  }
-
-  .typing span{
-    width:6px; height:6px;
-    background: var(--gold);
-    border-radius:50%;
-    opacity:0.4;
-    animation: blink 1.2s infinite;
-  }
-  .typing span:nth-child(2){ animation-delay:0.2s; }
-  .typing span:nth-child(3){ animation-delay:0.4s; }
-
-  @keyframes blink{
-    0%, 80%, 100%{ opacity:0.3; transform:translateY(0); }
-    40%{ opacity:1; transform:translateY(-2px); }
-  }
-
   .quick-replies{
     display:flex;
     flex-wrap:wrap;
     gap:8px;
     padding: 0 16px 12px;
-    flex-shrink:0;
   }
-
   .quick-replies button{
     background:#fff;
     border:1px solid var(--gold);
@@ -155,38 +106,23 @@
     padding:7px 13px;
     border-radius:14px;
     cursor:pointer;
-    font-family:'Inter', sans-serif;
   }
-
-  .quick-replies button:active{
-    background: var(--blush);
-  }
-
   form{
     display:flex;
     gap:10px;
-    padding: 12px 14px calc(env(safe-area-inset-bottom, 0px) + 12px);
+    padding: 12px 14px;
     background: #fff;
     border-top:1px solid var(--blush);
-    flex-shrink:0;
   }
-
   input[type="text"]{
     flex:1;
     border: 1.5px solid var(--blush);
     border-radius: 22px;
     padding: 11px 16px;
     font-size:14.5px;
-    font-family:'Inter', sans-serif;
     outline:none;
     background: var(--ivory);
-    color: var(--ink);
   }
-
-  input[type="text"]:focus{
-    border-color: var(--gold);
-  }
-
   button.send{
     background: var(--plum);
     color: var(--ivory);
@@ -195,19 +131,10 @@
     border-radius:50%;
     display:flex; align-items:center; justify-content:center;
     cursor:pointer;
-    flex-shrink:0;
   }
-
-  button.send:disabled{
-    opacity:0.5;
-  }
-
   button.send svg{
     width:18px; height:18px;
   }
-
-  .thread::-webkit-scrollbar{ width:4px; }
-  .thread::-webkit-scrollbar-thumb{ background: var(--blush); border-radius:2px; }
 </style>
 </head>
 <body>
@@ -231,106 +158,65 @@
 
   <form id="chatForm">
     <input type="text" id="userInput" placeholder="Apna sawal likhein..." autocomplete="off">
-    <button type="submit" class="send" id="sendBtn" aria-label="Send">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+    <button type="submit" class="send" aria-label="Send">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
     </button>
   </form>
 </div>
 
 <script>
-  // ============================================================
-  // SETUP: 2 cheezein yahan badalni hain
-  // ============================================================
-  const API_KEY = "";
-
-  const BUSINESS_INFO = `
-Tum "Sana's Boutique" ke liye ek friendly customer support assistant ho, jo women's lawn suits aur unstitched fabric bechti hai.
-
-Dukan ki maloomat:
-- Timings: Har roz subah 11 baje se raat 9 baje tak (Jumma ko dopeher 2 se 4 tak band)
-- Location: Main Boulevard, Gulberg, Lahore
-- Delivery: Lahore ke andar 1-2 din, baqi Pakistan mein 3-5 din. Delivery charges Rs. 200 (Rs. 3000+ order par free)
-- Naye lawn suits: Rs. 2500 se Rs. 6500 tak (design ke hisab se)
-- Payment: Cash on delivery, ya bank transfer/EasyPaisa advance
-- Return/Exchange: 3 din ke andar, agar tags laga ho aur istamal na hua ho
-
-Hamesha Roman Urdu mein, dosti wale lehje mein, chhote aur seedhe jawab do. Agar koi cheez maloom na ho to kaho "Ye mujhe pata nahi, main apni team se puchke bataungi" — kabhi khud se jhooti maloomat mat do.
-`;
-
-  // ============================================================
   const thread = document.getElementById('thread');
   const form = document.getElementById('chatForm');
   const input = document.getElementById('userInput');
-  const sendBtn = document.getElementById('sendBtn');
   const quickReplies = document.getElementById('quickReplies');
 
-  let history = [];
-
+  // Message dikhane ka function
   function addBubble(text, sender){
     const div = document.createElement('div');
     div.className = 'bubble ' + sender;
     div.textContent = text;
     thread.appendChild(div);
     thread.scrollTop = thread.scrollHeight;
-    return div;
   }
 
-  function showTyping(){
-    const div = document.createElement('div');
-    div.className = 'typing';
-    div.id = 'typingIndicator';
-    div.innerHTML = '<span></span><span></span><span></span>';
-    thread.appendChild(div);
-    thread.scrollTop = thread.scrollHeight;
-  }
-
-  function hideTyping(){
-    const el = document.getElementById('typingIndicator');
-    if(el) el.remove();
-  }
-
-  async function sendToGemini(userText){
-    history.push({ role: "user", parts: [{ text: userText }] });
-
-    const body = {
-      system_instruction: { parts: [{ text: BUSINESS_INFO }] },
-      contents: history
-    };
-
-    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${API_KEY}`;
-
-    try{
-      const res = await fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body)
-      });
-      const data = await res.json();
-
-      if(data.error){
-        return "Maaf kijiye, is waqt jawab dene mein masla aa raha hai. Thori dair mein dobara koshish karein.";
-      }
-
-      const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "Maaf kijiye, samajh nahi aaya. Dobara poochein?";
-      history.push({ role: "model", parts: [{ text: reply }] });
-      return reply;
-    }catch(err){
-      return "Internet connection check karein aur dobara koshish karein.";
+  // Bot ka jawab dene ka function (Offline Demo)
+  function getBotReply(userText){
+    const text = userText.toLowerCase();
+    
+    if (text.includes("timing") || text.includes("waqt") || text.includes("khula") || text.includes("band")) {
+        return "Humari dukan rozana subah 11 baje se raat 9 baje tak khuli hoti hai. Jumma ko 2 se 4 tak band rehti hai.";
+    } 
+    else if (text.includes("delivery") || text.includes("pohanch") || text.includes("courier")) {
+        return "Lahore ke andar 1-2 din, aur baqi Pakistan mein 3-5 din mein delivery hoti hai. Charges Rs. 200 hain, lekin Rs. 3000 se upar order par free hai.";
+    } 
+    else if (text.includes("rate") || text.includes("price") || text.includes("qeemat") || text.includes("kitne ka")) {
+        return "Naye lawn suits Rs. 2500 se Rs. 6500 tak available hain. Design ke hisab se rate change hota hai.";
+    } 
+    else if (text.includes("location") || text.includes("shop") || text.includes("kahan") || text.includes("address")) {
+        return "Humari dukan Main Boulevard, Gulberg, Lahore mein hai.";
+    } 
+    else if (text.includes("payment") || text.includes("paise") || text.includes("advance") || text.includes("cod")) {
+        return "Hum Cash on Delivery (COD) aur Bank Transfer/EasyPaisa dono accept karte hain.";
+    }
+    else if (text.includes("return") || text.includes("exchange") || text.includes("wapas")) {
+        return "Return ya Exchange sirf 3 din ke andar ho sakta hai, shart ye hai ke tags lage hon aur kapra istemal na hua ho.";
+    }
+    else {
+        return "Assalam-o-Alaikum! Sana's Boutique mein khush aamdeed 🌸 Aap timings, delivery, rates, ya location ke baray mein pooch sakte hain.";
     }
   }
 
-  async function handleSend(text){
+  // Message bhejne ka function
+  function handleSend(text){
     if(!text.trim()) return;
     addBubble(text, 'user');
     input.value = '';
-    sendBtn.disabled = true;
-    showTyping();
-
-    const reply = await sendToGemini(text);
-    hideTyping();
-    addBubble(reply, 'bot');
-    sendBtn.disabled = false;
-    input.focus();
+    
+    // Thori si der baad bot ka jawab aayega (asli AI jaisa feel dene ke liye)
+    setTimeout(() => {
+        const reply = getBotReply(text);
+        addBubble(reply, 'bot');
+    }, 600);
   }
 
   form.addEventListener('submit', (e) => {
@@ -343,7 +229,7 @@ Hamesha Roman Urdu mein, dosti wale lehje mein, chhote aur seedhe jawab do. Agar
     if(btn) handleSend(btn.dataset.q);
   });
 
-  // Welcome message
+  // Shuru mein welcome message
   addBubble("Assalam-o-Alaikum! Sana's Boutique mein khush aamdeed 🌸 Aap ka kya sawal hai?", 'bot');
 </script>
 
